@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/winnsulin/PHAM_CSC3916_Assignment5-#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.2.1",
     "mongoose": "^9.4.1",
     "passport": "^0.7.0"

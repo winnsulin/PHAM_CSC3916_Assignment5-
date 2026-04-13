@@ -6,7 +6,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 
 const User = require('./Users');
-const Movie = require('./movies');
+const Movie = require('./Movies');
 const authJwtController = require('./auth_jwt');
 const reviewsRouter = require('./routes/reviews');
 
@@ -21,15 +21,15 @@ app.use(passport.initialize());
 
 // Connect to MongoDB
 mongoose.connect(process.env.DB)
-  .then(() => console.log('server.js PHAM-HW4 Connected to MongoDB'))
+  .then(() => console.log('server.js PHAM-HW5 Connected to MongoDB'))
   .catch(err => {
-    console.error('server.js PHAM-HW4 MongoDB Connection Error:', err);
+    console.error('server.js PHAM-HW5 MongoDB Connection Error:', err);
     process.exit(1);
   });
 
 // Home route
 app.get('/', (req, res) => {
-    res.send('PHAM_Assignment4_MoviesAPI is Live!');
+    res.send('PHAM_Assignment5_MoviesAPI is Live!');
 });
 
 // Routes
