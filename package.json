@@ -1,0 +1,30 @@
+{
+  "name": "pham_csc3916_assignment5-",
+  "version": "1.0.0",
+  "description": "The purpose of this assignment is to create a React Single Page App over your developed API.  The interface will allow the users to search for movies, display information about the movie, see stored ratings, and allow the user to enter a rating.",
+  "main": "auth.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winnsulin/PHAM_CSC3916_Assignment5-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/winnsulin/PHAM_CSC3916_Assignment5-/issues"
+  },
+  "homepage": "https://github.com/winnsulin/PHAM_CSC3916_Assignment5-#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "passport": "^0.7.0"
+  }
+}
