@@ -11,17 +11,14 @@ const UserSchema = new Schema({
     password: { type: String, required: true, select: false }
 });
 
-UserSchema.pre('save', async function(next) {  // Use async/await for cleaner code
-    const user = this;
-
-    if (!user.isModified('password')) return next();
+UserSchema.pre('save', async function() {
+    if (!this.isModified('password')) return;
 
     try {
-        const hash = await bcrypt.hash(user.password, 10); // 10 is the salt rounds (adjust as needed)
-        user.password = hash;
-        next();
+        const hash = await bcrypt.hash(this.password, 10);
+        this.password = hash;
     } catch (err) {
-        return next(err);
+        throw err;
     }
 });
 
