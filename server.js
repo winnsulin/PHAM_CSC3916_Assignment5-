@@ -47,7 +47,7 @@ router.post('/signup', async (req, res) => {
       password: req.body.password
     });
     await user.save();
-    res.status(201).json({ success: true, msg: 'User created successfully.' });
+    res.status(201).json({ success: true, msg:  'User created successfully.' });
   } catch (err) {
     if (err.code === 11000)
       return res.status(409).json({ success: false, msg: 'Username already exists.' });
@@ -86,10 +86,21 @@ router.route('/movies')
               from: 'reviews',         // must match your MongoDB collection name
               localField: '_id',       // Movie._id
               foreignField: 'movieId', // Review.movieId
-              as: 'reviews'
+              as: 'reviewScore'
             }
-          }
+          },
+          {
+            $addFields: {
+              avgRating: {
+                $ifNull: [{ $avg: '$reviewScore.rating'}, 0]
+              }
+            }
+          },
+        {
+          $sort: {avgRating: -1}
+        }
         ]);
+
         return res.json(moviesWithReviews);
       }
 
