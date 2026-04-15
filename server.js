@@ -156,6 +156,44 @@ router.route('/movies/:title')
     }
   });
 
+
+  // Movie Detail Screen
+  router.get('/movies/:id/details', authJwtController.isAuthenticated, async (req, res) => {
+  try {
+    const movieId = new mongoose.Types.ObjectId(req.params.id);
+
+    const result = await Movie.aggregate([
+      {
+        $match: { _id: movieId }
+      },
+      {
+        $lookup: {
+          from: 'reviews',
+          localField: '_id',
+          foreignField: 'movieId',
+          as: 'reviewScore'
+        }
+      },
+      {
+        $addFields: {
+          avgRating: {
+            $ifNull: [{ $avg: '$reviewScore.rating' }, 0]
+          }
+        }
+      }
+    ]);
+
+    if (!result.length) {
+      return res.status(404).json({ msg: 'Movie not found' });
+    }
+
+    res.json(result[0]);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Reviews router
 app.use('/api/reviews', reviewsRouter);
 
