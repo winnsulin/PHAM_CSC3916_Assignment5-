@@ -74,7 +74,7 @@ router.post('/signin', async (req, res) => {
   }
 });
 
-// Movies collection route
+// Show all movies and their reviews
 router.route('/movies')
   .get(authJwtController.isAuthenticated, async (req, res) => {
     try {
@@ -158,11 +158,13 @@ router.route('/movies/:title')
 
 
   // Movie Detail Screen
-  router.get('/movies/:id/details', authJwtController.isAuthenticated, async (req, res) => {
+const mongoose = require('mongoose');
+
+router.get('/movies/:id/details', authJwtController.isAuthenticated, async (req, res) => {
   try {
     const movieId = new mongoose.Types.ObjectId(req.params.id);
 
-    const result = await Movie.aggregate([
+    const aggregate = [
       {
         $match: { _id: movieId }
       },
@@ -171,24 +173,23 @@ router.route('/movies/:title')
           from: 'reviews',
           localField: '_id',
           foreignField: 'movieId',
-          as: 'reviewScore'
+          as: 'movieReviews'
         }
       },
       {
         $addFields: {
-          avgRating: {
-            $ifNull: [{ $avg: '$reviewScore.rating' }, 0]
-          }
+          avgRating: { $avg: '$movieReviews.rating' }
         }
       }
-    ]);
+    ];
 
-    if (!result.length) {
+    const result = await Movie.aggregate(aggregate);
+
+    if (!result || result.length === 0) {
       return res.status(404).json({ msg: 'Movie not found' });
     }
 
-    res.json(result[0]);
-
+    res.json(result[0]); // return single movie
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
