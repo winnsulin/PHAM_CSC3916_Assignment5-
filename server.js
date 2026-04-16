@@ -158,8 +158,6 @@ router.route('/movies/:title')
 
 
   // Movie Detail Screen
-const mongoose = require('mongoose');
-
 router.get('/movies/:id/details', authJwtController.isAuthenticated, async (req, res) => {
   try {
     const movieId = new mongoose.Types.ObjectId(req.params.id);
