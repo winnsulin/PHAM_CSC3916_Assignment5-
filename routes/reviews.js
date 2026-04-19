@@ -37,7 +37,7 @@ router.post(
 
       const newReview = new Review({
         movieId,
-        username,
+        username:  req.user.username,
         review,
         rating
       });
