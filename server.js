@@ -86,13 +86,13 @@ router.route('/movies')
               from: 'reviews',         // must match your MongoDB collection name
               localField: '_id',       // Movie._id
               foreignField: 'movieId', // Review.movieId
-              as: 'reviewScore'
+              as: 'movieReviews'
             }
           },
           {
             $addFields: {
               avgRating: {
-                $ifNull: [{ $avg: '$reviewScore.rating'}, 0]
+                $ifNull: [{ $avg: '$movieReviews.rating'}, 0]
               }
             }
           },
@@ -157,7 +157,6 @@ router.route('/movies/:title')
   });
 
 
-  // Movie Detail Screen
 router.get('/movies/:id/details', authJwtController.isAuthenticated, async (req, res) => {
   try {
     const movieId = new mongoose.Types.ObjectId(req.params.id);
