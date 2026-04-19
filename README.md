@@ -1,39 +1,5 @@
-# Assignment Five
-## Purpose
+https://pham-csc3916-react19.onrender.com
 
-The purpose of this assignment is to create a React Single Page App over your developed API.  The interface will allow the users to search for movies, display information about the movie, see stored ratings, and allow the user to enter a rating.
+https://pham-csc3916-assignment5.onrender.com
 
-## Pre-Requirements
-- Assignment 3 deployed REACT app that supports SignUp and Logon
-- Assignment 4 that supports reviews
-
-## Requirements
-- Update your API to support storing an image (or image URL) for the movies you have stored.  You will use the image URL in your React application to show the image of movies
-    - New Attribute on the movie collection
-- For this assignment all your endpoints should be protected by JWT authentication
-- Implement the following interfaces
-    - User SignUp and User Logon
-        - Leverage your User mongoDB collection to store new users of the application
-    - Main screen should show the top rated movies (show at least 5)
-        - Your GET /movies endpoint should sort by rating (server side)
-            - Update your /movies (with reviews=true) endpoint to sort by average rating descending
-    - Movie Detail screen, shows the Movie, Image, Actors that were in the movie, aggregated rating for the movie and grid that shows the reviews (username, rating, review)
-    - Extra Credit: (7 points) - chapter 25 of (https://www.amazon.com/dp/B0979MGJ5J?_encoding=UTF8&psc=1&ref_=cm_sw_r_cp_ud_dp_M9YGPJNZWB3BK0P59QX3) Movie Search – show results in a grid, accordion or other list control
-        - Add Search API (HTTP POST) to the API that can take partial movie names or partial actor names
-
-## Submissions
-- User is able to Sign-up (name, username, password)
-- User is able to Logon to the application (username, password)
-- User is able to see list of movies and select a movie to see the detail screen (top rated movies displayed)
-- User is able to enter a review on the detail page (enter a rating and comment) – the logged in user’s username will be associated with the review (as captured from the JSON Web Token)
-
-## Rubic
-- -3 Not able to add comments
-- -2 Not aggregating rating (average rating)
-- -3 if not pointed to correct end point (e.g Hw4 endpoint)
-- -5 if you don’t have a react web site deployed 
-
-## Resources
-- https://github.com/facebook/create-react-app
-- https://github.com/mars/create-react-app-buildpack#user-content-requires
-
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/51584158-0505c098-ff66-430e-aec1-e0bc6f927697?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D51584158-0505c098-ff66-430e-aec1-e0bc6f927697%26entityType%3Dcollection%26workspaceId%3D8ea196ab-b58d-4ddd-a163-449542b34e03#?env%5BPHAM-Environment-MoviesAPI%5D=W3sia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cHM6Ly9waGFtLWNzYzM5MTYtYXNzaWdubWVudDUub25yZW5kZXIuY29tLyIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiaHR0cHM6Ly9waGFtLWNzYzM5MTYtYXNzaWdubWVudDUub25yZW5kZXIuY29tLyIsInNlc3Npb25JbmRleCI6MH0seyJrZXkiOiJ0b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6ImFueSIsInNlc3Npb25WYWx1ZSI6IkpXVC4uLiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiSldUIGV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpwWkNJNklqWTVaVFExTVRSbVlUUXhNbVUxT1RVM05ESTNOMlU0TlNJc0luVnpaWEp1WVcxbElqb2lSSFZpZVdWRGFHOWpiMnhoZEdWQVoyMWhhV3d1WTI5dElpd2lhV0YwSWpveE56YzJOVGN3TnpJMExDSmxlSEFpT2pFM056WTFOelF6TWpSOS5fejJaSkdrV2ZhbDV3TF9MZ19NaWVnSTAxenBuUXUzb184NkpDVnFxSnhFIiwic2Vzc2lvbkluZGV4IjoxfSx7ImtleSI6Im1vdmllSUQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiNjliNDgyZTk1M2VmNWE4MGMwNmYyY2YyIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiI2OWI0ODJlOTUzZWY1YTgwYzA2ZjJjZjIiLCJzZXNzaW9uSW5kZXgiOjJ9LHsia2V5IjoicmV2aWV3SUQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiNjlkYjAyYTg5ZTViODI3NjMzZWQ3ZGYxIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiI2OWRiMDJhODllNWI4Mjc2MzNlZDdkZjEiLCJzZXNzaW9uSW5kZXgiOjN9LHsia2V5IjoibW92aWVUaXRsZSIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6ImRlZmF1bHQiLCJzZXNzaW9uVmFsdWUiOiJGYW50YXN0aWMgTXIuIEZveCIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiRmFudGFzdGljIE1yLiBGb3giLCJzZXNzaW9uSW5kZXgiOjR9XQ==)
